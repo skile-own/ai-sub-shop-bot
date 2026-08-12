@@ -1,0 +1,14 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+.venv/
+venv/
+ENV/
+*.db
+
+# Node / Vercel
+node_modules/
+.vercel
+.env
+.DS_Store
