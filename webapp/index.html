@@ -3,93 +3,121 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-    <title>AI Subscriptions Store</title>
+    <title>Apyra Shop — Премиум ИИ & Цифровые Подписки</title>
     <!-- Telegram WebApp SDK -->
     <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <!-- Google Fonts -->
+    <!-- Premium Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
-    <!-- FontAwesome icons -->
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;700&family=JetBrains+Mono:wght@400;600&display=swap" rel="stylesheet">
+    <!-- FontAwesome 6 Pro icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="app">
+    <div id="app" class="apyra-app">
+        <!-- Ambient Background Glow Effects -->
+        <div class="ambient-glow glow-1"></div>
+        <div class="ambient-glow glow-2"></div>
+        <div class="ambient-glow glow-3"></div>
+
         <!-- Top App Bar -->
         <header class="app-header">
-            <div class="user-badge" id="header-user">
-                <div class="user-avatar" id="user-avatar">AI</div>
-                <div class="user-info">
-                    <span class="user-name" id="user-name">Пользователь</span>
-                    <span class="user-status" id="user-status"><i class="fa-solid fa-shield-halved"></i> Верифицирован</span>
+            <div class="brand-badge">
+                <div class="brand-logo">
+                    <span class="logo-symbol">A</span>
+                    <span class="logo-spark">✦</span>
+                </div>
+                <div class="brand-text">
+                    <h1 class="brand-title">APYRA<span class="brand-accent">.SHOP</span></h1>
+                    <span class="brand-tagline"><i class="fa-solid fa-circle-check text-emerald"></i> Verified Digital Hub</span>
                 </div>
             </div>
+
             <div class="header-actions">
-                <button class="balance-btn" id="balance-btn">
-                    <i class="fa-solid fa-wallet"></i>
-                    <span id="user-balance">0 ₽</span>
+                <button class="topup-btn" id="btn-open-topup">
+                    <div class="wallet-icon-box"><i class="fa-solid fa-wallet"></i></div>
+                    <div class="balance-info">
+                        <span class="balance-lbl">Баланс</span>
+                        <span class="balance-val" id="user-balance">1 500 ₽</span>
+                    </div>
+                    <span class="plus-chip"><i class="fa-solid fa-plus"></i></span>
                 </button>
             </div>
         </header>
 
-        <!-- Hero Promo Banner -->
-        <section class="hero-banner">
-            <div class="hero-glow"></div>
-            <div class="hero-content">
-                <div class="hero-tag"><i class="fa-solid fa-bolt"></i> МГНОВЕННЫЙ ДОСТУП</div>
-                <h2>Подписки на Топовые Нейросети</h2>
-                <p>ChatGPT 4o, Claude 3.5 Sonnet, Gemini Advanced, Kimi k1.5 & Midjourney v6</p>
-                <div class="hero-features">
-                    <span><i class="fa-solid fa-check"></i> Гарантия 100%</span>
-                    <span><i class="fa-solid fa-clock"></i> Авто-выдача</span>
-                    <span><i class="fa-solid fa-headset"></i> Поддержка 24/7</span>
+        <!-- Hero Banner with Live Stats & Kimi Highlight -->
+        <section class="hero-card">
+            <div class="hero-badge"><i class="fa-solid fa-bolt"></i> APYRA ULTIMATE PASS 2026</div>
+            <h2 class="hero-heading">Безлимитный доступ к <span class="gradient-text">Kimi K3</span> & <span class="gradient-text-alt">ChatGPT 4o</span></h2>
+            <p class="hero-sub">Прямые ключи, персональные инвайты и гигантские контекстные окна до 10M токенов без задержек.</p>
+            
+            <div class="hero-metrics">
+                <div class="metric-item">
+                    <span class="metric-num">236+</span>
+                    <span class="metric-lbl">ИИ моделей</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                    <span class="metric-num">0.2 сек</span>
+                    <span class="metric-lbl">Выдача товара</span>
+                </div>
+                <div class="metric-divider"></div>
+                <div class="metric-item">
+                    <span class="metric-num">100%</span>
+                    <span class="metric-lbl">Гарантия работы</span>
                 </div>
             </div>
         </section>
 
-        <!-- Main Content Area -->
+        <!-- Main Container -->
         <main class="main-container">
 
             <!-- TAB 1: CATALOG -->
             <section id="tab-catalog" class="tab-content active">
-                <!-- Search & Filters -->
-                <div class="search-box">
-                    <i class="fa-solid fa-magnifying-glass"></i>
-                    <input type="text" id="search-input" placeholder="Поиск нейросети (ChatGPT, Claude...)...">
+                <!-- Search & Filters Bar -->
+                <div class="filter-controls">
+                    <div class="search-field">
+                        <i class="fa-solid fa-magnifying-glass search-icon"></i>
+                        <input type="text" id="search-input" placeholder="Поиск по 236+ моделям (Kimi K3, Claude, Midjourney)...">
+                        <button class="clear-search-btn" id="clear-search" style="display:none;"><i class="fa-solid fa-xmark"></i></button>
+                    </div>
                 </div>
 
-                <!-- Category Pills -->
-                <div class="categories-scroll">
-                    <button class="cat-pill active" data-category="all">
-                        <i class="fa-solid fa-border-all"></i> Все
-                    </button>
-                    <button class="cat-pill" data-category="chatgpt">
-                        <i class="fa-solid fa-robot"></i> ChatGPT
-                    </button>
-                    <button class="cat-pill" data-category="claude">
-                        <i class="fa-solid fa-brain"></i> Claude
-                    </button>
-                    <button class="cat-pill" data-category="gemini">
-                        <i class="fa-solid fa-sparkles"></i> Gemini
-                    </button>
-                    <button class="cat-pill" data-category="kimi">
-                        <i class="fa-solid fa-moon"></i> Kimi AI
-                    </button>
-                    <button class="cat-pill" data-category="midjourney">
-                        <i class="fa-solid fa-palette"></i> Midjourney
-                    </button>
-                    <button class="cat-pill" data-category="perplexity">
-                        <i class="fa-solid fa-compass"></i> Perplexity
-                    </button>
+                <!-- Custom Horizontal Category Pills -->
+                <div class="categories-wrapper">
+                    <div class="categories-scroll" id="categories-container">
+                        <button class="cat-pill active" data-category="all">
+                            <i class="fa-solid fa-fire"></i> Все топовые
+                        </button>
+                        <button class="cat-pill" data-category="kimi">
+                            <i class="fa-solid fa-moon"></i> Kimi K3 <span class="pill-badge">UNLIMITED</span>
+                        </button>
+                        <button class="cat-pill" data-category="chatgpt">
+                            <i class="fa-solid fa-robot"></i> ChatGPT 4o
+                        </button>
+                        <button class="cat-pill" data-category="claude">
+                            <i class="fa-solid fa-brain"></i> Claude 3.5
+                        </button>
+                        <button class="cat-pill" data-category="deepseek">
+                            <i class="fa-solid fa-bolt-lightning"></i> DeepSeek R1/V3
+                        </button>
+                        <button class="cat-pill" data-category="midjourney">
+                            <i class="fa-solid fa-wand-magic-sparkles"></i> Midjourney v6
+                        </button>
+                    </div>
                 </div>
 
-                <!-- Product Grid -->
-                <div class="section-title">
-                    <h3><i class="fa-solid fa-fire"></i> Доступные подписки</h3>
-                    <span class="count-badge" id="product-count">6 сервисов</span>
+                <!-- Product Grid Header -->
+                <div class="grid-header">
+                    <div class="grid-title">
+                        <h3><i class="fa-solid fa-layer-group"></i> Флагманские подписки</h3>
+                        <span class="status-dot"></span>
+                    </div>
+                    <span class="count-pill" id="product-count">7 активных предложений</span>
                 </div>
 
+                <!-- Product Cards Grid -->
                 <div class="products-grid" id="products-container">
                     <!-- Dynamic rendering via JS -->
                 </div>
@@ -97,8 +125,10 @@
 
             <!-- TAB 2: MY SUBSCRIPTIONS -->
             <section id="tab-subs" class="tab-content">
-                <div class="section-title">
-                    <h3><i class="fa-solid fa-key"></i> Мои активные подписки</h3>
+                <div class="grid-header">
+                    <div class="grid-title">
+                        <h3><i class="fa-solid fa-shield-halved text-emerald"></i> Ваши активные подписки</h3>
+                    </div>
                 </div>
 
                 <div id="my-subs-container" class="subs-list">
@@ -106,214 +136,310 @@
                 </div>
             </section>
 
-            <!-- TAB 3: PROFILE & SUPPORT -->
+            <!-- TAB 3: PROFILE & WALLET -->
             <section id="tab-profile" class="tab-content">
                 <div class="profile-card">
-                    <div class="profile-avatar" id="profile-big-avatar">AI</div>
-                    <h3 id="profile-full-name">Пользователь Telegram</h3>
-                    <p class="profile-id" id="profile-tg-id">ID: 000000000</p>
-                    <div class="profile-stats">
-                        <div class="stat-item">
-                            <span class="stat-val" id="stat-orders-count">0</span>
-                            <span class="stat-lbl">Покупок</span>
+                    <div class="profile-avatar-wrap">
+                        <div class="profile-avatar" id="profile-big-avatar">A</div>
+                        <span class="vip-badge"><i class="fa-solid fa-crown"></i> PRO</span>
+                    </div>
+                    <h3 class="profile-name" id="profile-full-name">Пользователь Apyra</h3>
+                    <p class="profile-id" id="profile-tg-id">Telegram ID: 777888999</p>
+
+                    <div class="profile-stats-row">
+                        <div class="p-stat">
+                            <span class="p-val" id="stat-orders-count">3</span>
+                            <span class="p-lbl">Покупки</span>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-val" id="stat-total-spent">0 ₽</span>
-                            <span class="stat-lbl">Потрачено</span>
+                        <div class="p-stat-sep"></div>
+                        <div class="p-stat">
+                            <span class="p-val text-emerald" id="stat-total-spent">4 270 ₽</span>
+                            <span class="p-lbl">Сумма заказов</span>
                         </div>
-                        <div class="stat-item">
-                            <span class="stat-val" id="stat-active-subs">0</span>
-                            <span class="stat-lbl">Активных</span>
+                        <div class="p-stat-sep"></div>
+                        <div class="p-stat">
+                            <span class="p-val text-cyan" id="stat-active-subs">2</span>
+                            <span class="p-lbl">Активных подписок</span>
                         </div>
                     </div>
                 </div>
 
-                <div class="menu-group">
-                    <div class="menu-item" id="btn-support">
-                        <div class="menu-icon icon-blue"><i class="fa-solid fa-headset"></i></div>
-                        <div class="menu-text">
-                            <h4>Служба поддержки</h4>
-                            <p>Вопросы по активации и работе сервисов</p>
+                <!-- Actions Menu -->
+                <div class="menu-list">
+                    <div class="menu-card" id="btn-topup-menu">
+                        <div class="menu-icon-box bg-gradient-emerald"><i class="fa-solid fa-wallet"></i></div>
+                        <div class="menu-info">
+                            <h4>Пополнить баланс Apyra</h4>
+                            <p>Мгновенное зачисление через СБП, Карта или CryptoBot</p>
                         </div>
-                        <i class="fa-solid fa-chevron-right"></i>
+                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
                     </div>
-                    <div class="menu-item" id="btn-faq">
-                        <div class="menu-icon icon-purple"><i class="fa-solid fa-circle-question"></i></div>
-                        <div class="menu-text">
-                            <h4>Часто задаваемые вопросы (FAQ)</h4>
-                            <p>Как работает инвайт и гарантия?</p>
-                        </div>
-                        <i class="fa-solid fa-chevron-right"></i>
-                    </div>
-                    <div class="menu-item" id="btn-promocode">
-                        <div class="menu-icon icon-green"><i class="fa-solid fa-ticket"></i></div>
-                        <div class="menu-text">
+
+                    <div class="menu-card" id="btn-promocode">
+                        <div class="menu-icon-box bg-gradient-purple"><i class="fa-solid fa-ticket"></i></div>
+                        <div class="menu-info">
                             <h4>Активировать промокод</h4>
-                            <p>Получите скидку или бонус на баланс</p>
+                            <p>Введите секретный код для получения бонуса (например APYRA2026)</p>
                         </div>
-                        <i class="fa-solid fa-chevron-right"></i>
+                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
+                    </div>
+
+                    <div class="menu-card" id="btn-support">
+                        <div class="menu-icon-box bg-gradient-blue"><i class="fa-solid fa-headset"></i></div>
+                        <div class="menu-info">
+                            <h4>Поддержка 24/7 @ApyraSupport</h4>
+                            <p>Оперативная помощь по настройке и гарантийная замена</p>
+                        </div>
+                        <i class="fa-solid fa-chevron-right arrow-icon"></i>
                     </div>
                 </div>
             </section>
 
             <!-- TAB 4: ADMIN PANEL -->
             <section id="tab-admin" class="tab-content">
-                <div class="section-title">
-                    <h3><i class="fa-solid fa-user-shield"></i> Панель Администратора</h3>
+                <div class="grid-header">
+                    <div class="grid-title">
+                        <h3><i class="fa-solid fa-user-gear text-violet"></i> Управление складом Apyra</h3>
+                    </div>
                 </div>
 
                 <div class="admin-stats-grid">
                     <div class="admin-stat-card">
-                        <span class="lbl">Доход за всё время</span>
-                        <span class="val" id="admin-total-revenue">0 ₽</span>
+                        <span class="lbl">Общая выручка</span>
+                        <span class="val text-emerald" id="admin-total-revenue">148 900 ₽</span>
                     </div>
                     <div class="admin-stat-card">
-                        <span class="lbl">Всего заказов</span>
-                        <span class="val" id="admin-orders-count">0</span>
+                        <span class="lbl">Продано ключей</span>
+                        <span class="val" id="admin-orders-count">87</span>
                     </div>
                     <div class="admin-stat-card">
-                        <span class="lbl">Товаров в наличии</span>
-                        <span class="val" id="admin-stock-count">0</span>
+                        <span class="lbl">В наличии на складе</span>
+                        <span class="val text-cyan" id="admin-stock-count">34</span>
                     </div>
                 </div>
 
-                <div class="admin-section">
-                    <h4><i class="fa-solid fa-plus-circle"></i> Добавить товар в базу (Ключи / Аккаунты)</h4>
+                <div class="admin-section-box">
+                    <h4><i class="fa-solid fa-plus-circle text-emerald"></i> Загрузить ключи / инвайты в базу</h4>
                     <form id="admin-add-stock-form">
                         <div class="form-group">
-                            <label>Сервис:</label>
-                            <select id="admin-product-select">
+                            <label>Выберите сервис Apyra:</label>
+                            <select id="admin-product-select" class="custom-select">
                                 <!-- Options dynamically filled -->
                             </select>
                         </div>
                         <div class="form-group">
-                            <label>Данные товара (каждый с новой строки):</label>
-                            <textarea id="admin-stock-data" rows="4" placeholder="login:password или https://chatgpt.com/invite/xxxx"></textarea>
+                            <label>Строки доступа (по одному на строку):</label>
+                            <textarea id="admin-stock-data" class="custom-textarea" rows="4" placeholder="KIMI_K3_UNLIMITED_KEY_88329&#10;https://chatgpt.com/invite/xxxx"></textarea>
                         </div>
-                        <button type="submit" class="primary-btn"><i class="fa-solid fa-upload"></i> Пополнить склад</button>
+                        <button type="submit" class="action-btn btn-primary-glow"><i class="fa-solid fa-upload"></i> Пополнить склад Apyra</button>
                     </form>
                 </div>
             </section>
 
         </main>
 
-        <!-- Product Details / Checkout Modal -->
+        <!-- Buy / Modal Drawer -->
         <div class="modal-overlay" id="modal-buy">
-            <div class="modal-content">
-                <button class="modal-close" id="modal-close-btn">&times;</button>
+            <div class="modal-sheet">
+                <div class="sheet-handle"></div>
+                <button class="modal-close" id="modal-close-btn"><i class="fa-solid fa-xmark"></i></button>
                 
                 <div class="modal-header">
-                    <div class="modal-product-icon" id="modal-icon"><i class="fa-solid fa-robot"></i></div>
-                    <div>
-                        <h3 id="modal-title">ChatGPT 4o Plus</h3>
-                        <span class="modal-badge" id="modal-badge">⭐ TOP SELL</span>
+                    <div class="product-badge-icon" id="modal-icon"><i class="fa-solid fa-moon"></i></div>
+                    <div class="modal-title-group">
+                        <h3 id="modal-title">Kimi K3 Ultra (Безлимит)</h3>
+                        <div class="tags-row">
+                            <span class="modal-badge badge-unlimited" id="modal-badge">⚡ UNLIMITED</span>
+                            <span class="stock-status"><i class="fa-solid fa-check-double text-emerald"></i> В наличии 14 шт</span>
+                        </div>
                     </div>
                 </div>
 
                 <div class="modal-body">
-                    <p class="modal-desc" id="modal-desc">Полный доступ к ChatGPT 4o, DALL-E 3, Canvas и кастомным GPTs.</p>
+                    <p class="modal-desc" id="modal-desc">Официальный флагманский доступ к Kimi K3 с безлимитным контекстом и авто-выдачей.</p>
 
                     <!-- Option 1: Access Type -->
-                    <div class="option-group">
-                        <label class="option-label"><i class="fa-solid fa-sliders"></i> Тип доступа:</label>
-                        <div class="radio-grid" id="access-type-grid">
+                    <div class="option-section">
+                        <label class="option-heading"><i class="fa-solid fa-sliders"></i> Формат доступа:</label>
+                        <div class="radio-cards-grid" id="access-type-grid">
                             <label class="radio-card active">
                                 <input type="radio" name="access_type" value="invite" checked>
-                                <span class="radio-title"><i class="fa-solid fa-user-plus"></i> Инвайт в группу / Team</span>
-                                <span class="radio-sub">На ваш личный аккаунт</span>
+                                <div class="radio-content">
+                                    <span class="radio-title"><i class="fa-solid fa-user-plus text-emerald"></i> Персональный инвайт</span>
+                                    <span class="radio-sub">Активируется прямо на ваш аккаунт</span>
+                                </div>
+                                <div class="radio-check"><i class="fa-solid fa-circle-check"></i></div>
                             </label>
                             <label class="radio-card">
                                 <input type="radio" name="access_type" value="personal">
-                                <span class="radio-title"><i class="fa-solid fa-user-check"></i> Индивидуальный аккаунт</span>
-                                <span class="radio-sub">Только ваш персональный логин</span>
-                            </label>
-                            <label class="radio-card">
-                                <input type="radio" name="access_type" value="shared">
-                                <span class="radio-title"><i class="fa-solid fa-users"></i> Общий аккаунт</span>
-                                <span class="radio-sub">Экономный вариант для базовых задач</span>
+                                <div class="radio-content">
+                                    <span class="radio-title"><i class="fa-solid fa-key text-cyan"></i> Готовый Pro-аккаунт</span>
+                                    <span class="radio-sub">Логин:Пароль с перепривязкой</span>
+                                </div>
+                                <div class="radio-check"><i class="fa-solid fa-circle-check"></i></div>
                             </label>
                         </div>
                     </div>
 
                     <!-- Option 2: Duration -->
-                    <div class="option-group">
-                        <label class="option-label"><i class="fa-solid fa-calendar-days"></i> Срок подписки:</label>
-                        <div class="duration-pills" id="duration-pills">
-                            <button class="dur-pill active" data-months="1" data-discount="1">1 Месяц</button>
-                            <button class="dur-pill" data-months="3" data-discount="0.9">3 Месяца (-10%)</button>
-                            <button class="dur-pill" data-months="12" data-discount="0.75">1 Год (-25%)</button>
+                    <div class="option-section">
+                        <label class="option-heading"><i class="fa-solid fa-calendar-check"></i> Период подписки:</label>
+                        <div class="duration-pills-row" id="duration-pills">
+                            <button class="dur-pill active" data-months="1" data-discount="1">
+                                <span>1 Месяц</span>
+                                <small>Базовый</small>
+                            </button>
+                            <button class="dur-pill" data-months="3" data-discount="0.85">
+                                <span>3 Месяца</span>
+                                <small class="discount-tag">-15% СКИДКА</small>
+                            </button>
+                            <button class="dur-pill" data-months="12" data-discount="0.70">
+                                <span>1 Год</span>
+                                <small class="discount-tag">-30% ВЫГОДА</small>
+                            </button>
                         </div>
                     </div>
 
                     <!-- Payment Method Selector -->
-                    <div class="option-group">
-                        <label class="option-label"><i class="fa-solid fa-credit-card"></i> Способ оплаты:</label>
-                        <div class="payment-methods">
+                    <div class="option-section">
+                        <label class="option-heading"><i class="fa-solid fa-credit-card"></i> Способ оплаты:</label>
+                        <div class="payment-methods-grid">
                             <label class="pay-method active">
-                                <input type="radio" name="pay_method" value="demo" checked>
-                                <div class="pay-icon icon-demo"><i class="fa-solid fa-flask"></i></div>
-                                <span>Демо Оплата (Тестовая выдача)</span>
+                                <input type="radio" name="pay_method" value="balance" checked>
+                                <div class="pay-icon-box bg-emerald"><i class="fa-solid fa-wallet"></i></div>
+                                <div class="pay-details">
+                                    <span class="pay-name">С баланса Apyra</span>
+                                    <span class="pay-sub">Доступно: <strong id="modal-user-balance">1 500 ₽</strong></span>
+                                </div>
+                            </label>
+                            <label class="pay-method">
+                                <input type="radio" name="pay_method" value="sbp">
+                                <div class="pay-icon-box bg-blue"><i class="fa-solid fa-qrcode"></i></div>
+                                <div class="pay-details">
+                                    <span class="pay-name">СБП / Карта Мир</span>
+                                    <span class="pay-sub">Без комиссии, по QR-коду</span>
+                                </div>
                             </label>
                             <label class="pay-method">
                                 <input type="radio" name="pay_method" value="stars">
-                                <div class="pay-icon icon-stars"><i class="fa-solid fa-star"></i></div>
-                                <span>Telegram Stars ⭐</span>
-                            </label>
-                            <label class="pay-method">
-                                <input type="radio" name="pay_method" value="card">
-                                <div class="pay-icon icon-card"><i class="fa-solid fa-qrcode"></i></div>
-                                <span>Банковская карта / СБП (ЮKassa)</span>
-                            </label>
-                            <label class="pay-method">
-                                <input type="radio" name="pay_method" value="crypto">
-                                <div class="pay-icon icon-crypto"><i class="fa-brands fa-bitcoin"></i></div>
-                                <span>CryptoBot / TON / USDT</span>
+                                <div class="pay-icon-box bg-gold"><i class="fa-solid fa-star"></i></div>
+                                <div class="pay-details">
+                                    <span class="pay-name">Telegram Stars ⭐</span>
+                                    <span class="pay-sub">Оплата в Telegram</span>
+                                </div>
                             </label>
                         </div>
                     </div>
 
-                    <!-- Total Price Calculation -->
-                    <div class="price-summary">
-                        <div class="price-row">
-                            <span>Итоговая цена:</span>
+                    <!-- Total Calculation -->
+                    <div class="checkout-summary">
+                        <div class="summary-line">
+                            <span class="summary-label">Итого к оплате:</span>
                             <span class="total-price-val" id="modal-total-price">1 490 ₽</span>
                         </div>
-                        <p class="guarantee-note"><i class="fa-solid fa-shield"></i> Автоматическая выдача сразу после оплаты</p>
+                        <div class="summary-perks">
+                            <span><i class="fa-solid fa-shield-check text-emerald"></i> Гарантия 100% на весь срок</span>
+                            <span><i class="fa-solid fa-bolt text-gold"></i> Мгновенно</span>
+                        </div>
                     </div>
 
-                    <button class="checkout-btn" id="btn-confirm-purchase">
-                        <span>Оформить подписку</span>
+                    <button class="checkout-submit-btn" id="btn-confirm-purchase">
+                        <span>Оплатить и получить ключ</span>
                         <i class="fa-solid fa-arrow-right"></i>
                     </button>
                 </div>
             </div>
         </div>
 
-        <!-- Order Success & Credentials Modal -->
+        <!-- Balance Topup Modal -->
+        <div class="modal-overlay" id="modal-topup">
+            <div class="modal-sheet">
+                <button class="modal-close" id="modal-topup-close"><i class="fa-solid fa-xmark"></i></button>
+                <div class="modal-header">
+                    <div class="product-badge-icon bg-gradient-emerald"><i class="fa-solid fa-wallet"></i></div>
+                    <div>
+                        <h3>Пополнение баланса Apyra</h3>
+                        <p class="sub-text">Выберите или введите сумму для зачисления</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="presets-row">
+                        <button class="preset-btn" data-amount="500">+500 ₽</button>
+                        <button class="preset-btn active" data-amount="1000">+1 000 ₽</button>
+                        <button class="preset-btn" data-amount="2500">+2 500 ₽</button>
+                        <button class="preset-btn" data-amount="5000">+5 000 ₽</button>
+                    </div>
+
+                    <div class="form-group margin-top">
+                        <label>Сумма пополнения (руб):</label>
+                        <input type="number" id="topup-amount-input" class="custom-input" value="1000" min="100">
+                    </div>
+
+                    <button class="action-btn btn-emerald-glow" id="btn-submit-topup">
+                        <i class="fa-solid fa-bolt"></i> Пополнить баланс мгновенно
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Promocode Modal -->
+        <div class="modal-overlay" id="modal-promo">
+            <div class="modal-sheet">
+                <button class="modal-close" id="modal-promo-close"><i class="fa-solid fa-xmark"></i></button>
+                <div class="modal-header">
+                    <div class="product-badge-icon bg-gradient-purple"><i class="fa-solid fa-ticket"></i></div>
+                    <div>
+                        <h3>Активация Промокода</h3>
+                        <p class="sub-text">Получите бонусные рубли на счет</p>
+                    </div>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group">
+                        <label>Введите промокод Apyra:</label>
+                        <input type="text" id="promo-input" class="custom-input uppercase" placeholder="APYRA2026">
+                    </div>
+                    <button class="action-btn btn-purple-glow" id="btn-submit-promo">
+                        <i class="fa-solid fa-gift"></i> Активировать
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Success Modal / Order Credentials -->
         <div class="modal-overlay" id="modal-success">
-            <div class="modal-content text-center">
-                <div class="success-icon-wrap">
+            <div class="modal-sheet text-center">
+                <div class="success-glow-ring">
                     <i class="fa-solid fa-circle-check"></i>
                 </div>
-                <h3>Подписка успешно активирована!</h3>
-                <p>Спасибо за заказ. Данные для доступа также отправлены вам в чат с ботом.</p>
+                <h3 class="success-title">Подписка Apyra активирована!</h3>
+                <p class="success-sub">Ваш доступ успешно сформирован и зарезервирован.</p>
 
-                <div class="credentials-box">
-                    <div class="cred-header"><i class="fa-solid fa-key"></i> Ваши данные доступа:</div>
-                    <div class="cred-value" id="success-credentials-text">...</div>
-                    <button class="copy-btn" id="btn-copy-cred"><i class="fa-solid fa-copy"></i> Скопировать данные</button>
+                <div class="credentials-card">
+                    <div class="cred-header">
+                        <i class="fa-solid fa-key text-gold"></i>
+                        <span>Ключ / Данные для входа:</span>
+                    </div>
+                    <div class="cred-value-box" id="success-credentials-text">
+                        KIMI_K3_UNLIMITED_PRO_883291
+                    </div>
+                    <button class="copy-action-btn" id="btn-copy-cred">
+                        <i class="fa-solid fa-copy"></i>
+                        <span>Скопировать в буфер</span>
+                    </button>
                 </div>
 
-                <div class="instruction-box" id="success-instructions">
-                    <h4><i class="fa-solid fa-list-check"></i> Инструкция по активации:</h4>
-                    <ol id="instruction-steps">
-                        <li>Перейдите на официальный сайт сервиса.</li>
-                        <li>Войдите с предоставленными данными или перейдите по ссылке-приглашению.</li>
-                        <li>Наслаждайтесь премиум возможностями!</li>
+                <div class="instructions-card">
+                    <h4><i class="fa-solid fa-list-check text-cyan"></i> Инструкция по активации:</h4>
+                    <ol id="instruction-steps" class="steps-list">
+                        <li>Скопируйте ваш уникальный ключ выше.</li>
+                        <li>Перейдите в личный кабинет сервиса или нажмите на инвайт-ссылку.</li>
+                        <li>Вставьте ключ в поле активации. Наслаждайтесь безлимитным ИИ!</li>
                     </ol>
                 </div>
 
-                <button class="primary-btn" id="btn-close-success">Понятно, открыть мои подписки</button>
+                <button class="action-btn btn-primary-glow" id="btn-close-success">
+                    Открыть мои подписки
+                </button>
             </div>
         </div>
 
@@ -327,15 +453,15 @@
                 <span>Каталог</span>
             </button>
             <button class="nav-item" data-tab="tab-subs">
-                <div class="nav-icon-badge" id="nav-subs-count">0</div>
+                <div class="nav-icon-badge" id="nav-subs-count">2</div>
                 <i class="fa-solid fa-key"></i>
                 <span>Подписки</span>
             </button>
             <button class="nav-item" data-tab="tab-profile">
-                <i class="fa-solid fa-user"></i>
-                <span>Профиль</span>
+                <i class="fa-solid fa-user-astronaut"></i>
+                <span>Кабинет</span>
             </button>
-            <button class="nav-item" id="nav-admin-tab" data-tab="tab-admin" style="display: none;">
+            <button class="nav-item" id="nav-admin-tab" data-tab="tab-admin">
                 <i class="fa-solid fa-user-gear"></i>
                 <span>Админка</span>
             </button>

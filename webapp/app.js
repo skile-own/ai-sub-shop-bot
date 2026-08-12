@@ -1,10 +1,10 @@
-// Telegram WebApp Initialization
+// Telegram WebApp SDK Initialization
 const tg = window.Telegram?.WebApp || {
     ready: () => {},
     expand: () => {},
     close: () => {},
     initDataUnsafe: {
-        user: { id: 777888999, first_name: "Кирилл", username: "kirill_ai" }
+        user: { id: 777888999, first_name: "Клиент", username: "apyra_user" }
     },
     HapticFeedback: {
         impactOccurred: () => {},
@@ -15,12 +15,12 @@ const tg = window.Telegram?.WebApp || {
 tg.ready();
 tg.expand();
 
-// API Base URL (Dynamic detection)
+// API Endpoint
 const API_BASE = window.location.origin.includes('localhost') || window.location.origin.includes('127.0.0.1')
     ? 'http://127.0.0.1:8000/api'
     : '/api';
 
-// Initial Mock Products Database (Fallback if backend API offline)
+// Apyra Shop Catalog Database
 let productsData = [
     {
         id: "chatgpt",
@@ -28,14 +28,14 @@ let productsData = [
         category: "chatgpt",
         icon: "fa-robot",
         bgClass: "bg-chatgpt",
-        badge: "🔥 TOP SELL",
+        badge: "🔥 ХИТ ПРОДАЖ",
         badgeClass: "badge-hot",
-        subtitle: "GPT-4o, DALL-E 3, Canvas, кастомные GPTs и загрузка файлов",
+        subtitle: "Доступ к GPT-4o, DALL-E 3, Canvas и персональным ассистентам GPTs",
         price: 1490,
         instructions: [
-            "1. Перейдите по отправленной вам ссылке-приглашению или используйте логин/пароль.",
-            "2. Откройте сайт chatgpt.com и авторизуйтесь.",
-            "3. Пользуйтесь возможностями ChatGPT Plus без ограничений!"
+            "1. Перейдите по выданной инвайт-ссылке или введите логин и пароль.",
+            "2. Откройте chatgpt.com и начните работу в подписке Plus.",
+            "3. Гарантия Apyra Shop действует на весь срок оплаты."
         ]
     },
     {
@@ -44,30 +44,29 @@ let productsData = [
         category: "claude",
         icon: "fa-brain",
         bgClass: "bg-claude",
-        badge: "⭐ TOP CODE",
+        badge: "⭐ ДЛЯ КОДА",
         badgeClass: "badge-pro",
-        subtitle: "Лучшая ИИ-модель для написания кода, текста и анализа файлов",
+        subtitle: "Мощная ИИ-модель Anthropic для генерации программного кода и больших текстов",
         price: 1890,
         instructions: [
-            "1. Зайдите на claude.ai с предоставленным логином и паролем.",
-            "2. Введите код подтверждения (при необходимости напишите поддержке).",
-            "3. Пользуйтесь профессиональным Claude 3.5 Pro."
+            "1. Авторизуйтесь на сайте claude.ai под выданными учетными данными.",
+            "2. Используйте полные преимущества тарифа Pro без ограничений.",
+            "3. По всем вопросам обратитесь в службу поддержки Apyra Shop."
         ]
     },
     {
         id: "gemini",
-        name: "Gemini Advanced 1.5",
+        name: "Gemini 1.5 Advanced",
         category: "gemini",
         icon: "fa-sparkles",
         bgClass: "bg-gemini",
-        badge: "⚡ FAST",
+        badge: "⚡ 2M CONTEXT",
         badgeClass: "badge-fast",
-        subtitle: "Модель от Google с гигантским контекстным окном на 2 млн токенов",
+        subtitle: "Модель от Google с невероятным окном контекста 2 000 000 токенов и Google One 2TB",
         price: 1290,
         instructions: [
-            "1. Перейдите по ссылке активации подписки Google One 2TB + Gemini.",
-            "2. Примите приглашение в семейную группу.",
-            "3. Gemini Advanced сразу активируется на вашем Google аккаунте!"
+            "1. Примите приглашение в семейную группу Google.",
+            "2. Gemini Advanced мгновенно активируется на вашем личном аккаунте!"
         ]
     },
     {
@@ -78,28 +77,28 @@ let productsData = [
         bgClass: "bg-kimi",
         badge: "🔥 NEW",
         badgeClass: "badge-hot",
-        subtitle: "Прорывной азиатский ИИ с глубоким рассуждением и анализом длинных веб-страниц",
+        subtitle: "Инновационный азиатский рассуждающий ИИ с анализом длинных документов",
         price: 990,
         instructions: [
-            "1. Зайдите на kimi.moonshot.cn.",
-            "2. Введите предоставленный токен доступа в настройки профиля.",
-            "3. Наслаждайтесь лимитами Kimi Pro!"
+            "1. Войдите на kimi.moonshot.cn.",
+            "2. Вставьте предоставленный ключ доступа Apyra в личный кабинет.",
+            "3. Пользуйтесь расширенными лимитами k1.5 Pro!"
         ]
     },
     {
         id: "midjourney",
-        name: "Midjourney v6 Basic/Pro",
+        name: "Midjourney v6 Pro",
         category: "midjourney",
         icon: "fa-palette",
         bgClass: "bg-midjourney",
-        badge: "🎨 ART",
+        badge: "🎨 ДИЗАЙН",
         badgeClass: "badge-pro",
-        subtitle: "Генерация гиперреалистичных изображений и артов через Discord",
+        subtitle: "Генерация гиперреалистичных артов и изображений высокого разрешения",
         price: 1590,
         instructions: [
-            "1. Зайдите в Discord и перейдите в личный кабинет Midjourney Bot.",
-            "2. Используйте выданный Fast Time ключ или личный аккаунт.",
-            "3. Генерируйте шедевры командами /imagine!"
+            "1. Откройте Discord и войдите в личный чат с ботом Midjourney.",
+            "2. Используйте Fast Time ключ активации от Apyra Shop.",
+            "3. Создавайте шедевры через команду /imagine!"
         ]
     },
     {
@@ -108,13 +107,13 @@ let productsData = [
         category: "perplexity",
         icon: "fa-compass",
         bgClass: "bg-perplexity",
-        badge: "🔍 SEARCH",
+        badge: "🔍 ПОИСК",
         badgeClass: "badge-fast",
-        subtitle: "ИИ-поисковик с доступом к GPT-4o, Claude 3.5 и мгновенными ссылками на источники",
+        subtitle: "Интеллектуальный поисковик с возможностью переключения моделей GPT-4o и Claude 3.5",
         price: 1390,
         instructions: [
-            "1. Зайдите на perplexity.ai с выданными учетными данными.",
-            "2. Доступ к Pro Search с выбором любых нейросетей активен!",
+            "1. Авторизуйтесь на perplexity.ai под предоставленными данными.",
+            "2. Наслаждайтесь нелимитированным Pro Search по всему интернету."
         ]
     }
 ];
@@ -123,15 +122,15 @@ let productsData = [
 let state = {
     user: {
         id: tg.initDataUnsafe?.user?.id || 777888999,
-        name: tg.initDataUnsafe?.user?.first_name || "Пользователь",
+        name: tg.initDataUnsafe?.user?.first_name || "Клиент",
         username: tg.initDataUnsafe?.user?.username || "",
         balance: 0,
-        isAdmin: true // Allowed for demo
+        isAdmin: true
     },
     activeCategory: "all",
     searchQuery: "",
     selectedProduct: null,
-    selectedDuration: 1, // months
+    selectedDuration: 1,
     selectedDiscount: 1.0,
     selectedAccessType: "invite",
     selectedPayMethod: "demo",
@@ -187,7 +186,7 @@ const elements = {
     adminStockCount: document.getElementById('admin-stock-count')
 };
 
-// Initialize Application
+// App Initialization
 document.addEventListener('DOMContentLoaded', async () => {
     initUserUI();
     setupNavigation();
@@ -199,21 +198,14 @@ document.addEventListener('DOMContentLoaded', async () => {
     updateProfileUI();
 });
 
-// Setup User UI Data
 function initUserUI() {
-    elements.userName.textContent = state.user.name;
-    const initial = state.user.name.charAt(0).toUpperCase() || "A";
-    elements.userAvatar.textContent = initial;
-    elements.profileAvatar.textContent = initial;
-    elements.profileFullName.textContent = state.user.name;
-    elements.profileTgId.textContent = `ID: ${state.user.id}`;
-    
-    if (state.user.isAdmin) {
+    if (elements.profileFullName) elements.profileFullName.textContent = state.user.name;
+    if (elements.profileTgId) elements.profileTgId.textContent = `ID: ${state.user.id}`;
+    if (state.user.isAdmin && elements.navAdminTab) {
         elements.navAdminTab.style.display = "flex";
     }
 }
 
-// Navigation Tabs Handling
 function setupNavigation() {
     const navItems = document.querySelectorAll('.bottom-nav .nav-item');
     navItems.forEach(item => {
@@ -236,9 +228,7 @@ function setupNavigation() {
     });
 }
 
-// Category Pill & Search Filters
 function setupFilterEvents() {
-    // Category pills
     const pills = document.querySelectorAll('.cat-pill');
     pills.forEach(pill => {
         pill.addEventListener('click', () => {
@@ -250,14 +240,14 @@ function setupFilterEvents() {
         });
     });
 
-    // Search bar
-    elements.searchInput.addEventListener('input', (e) => {
-        state.searchQuery = e.target.value.toLowerCase().trim();
-        renderProducts();
-    });
+    if (elements.searchInput) {
+        elements.searchInput.addEventListener('input', (e) => {
+            state.searchQuery = e.target.value.toLowerCase().trim();
+            renderProducts();
+        });
+    }
 }
 
-// Fetch Catalog from Backend API (with Fallback)
 async function fetchCatalogAndUserData() {
     try {
         const res = await fetch(`${API_BASE}/products`);
@@ -268,10 +258,9 @@ async function fetchCatalogAndUserData() {
             }
         }
     } catch (err) {
-        console.warn("Backend API not reachable, using local catalog data.");
+        console.warn("API offline, static catalog active.");
     }
 
-    // Populate Admin Select
     if (elements.adminProductSelect) {
         elements.adminProductSelect.innerHTML = productsData.map(p => 
             `<option value="${p.id}">${p.name}</option>`
@@ -279,7 +268,6 @@ async function fetchCatalogAndUserData() {
     }
 }
 
-// Render Products Grid
 function renderProducts() {
     const filtered = productsData.filter(p => {
         const matchesCategory = state.activeCategory === 'all' || p.category === state.activeCategory;
@@ -288,11 +276,11 @@ function renderProducts() {
         return matchesCategory && matchesSearch;
     });
 
-    elements.productCount.textContent = `${filtered.length} товаров`;
+    if (elements.productCount) elements.productCount.textContent = `${filtered.length} сервисов`;
 
     if (filtered.length === 0) {
         elements.productsContainer.innerHTML = `
-            <div style="grid-column: 1/-1; text-align: center; padding: 40px 10px; color: var(--text-muted);">
+            <div style="grid-column: 1/-1; text-align: center; padding: 40px 10px; color: var(--text-secondary);">
                 <i class="fa-solid fa-ghost" style="font-size: 36px; margin-bottom: 10px;"></i>
                 <p>Ничего не найдено по вашему запросу</p>
             </div>
@@ -312,13 +300,12 @@ function renderProducts() {
             <p class="product-subtitle">${p.subtitle}</p>
             <div class="product-footer">
                 <div class="product-price">${p.price.toLocaleString('ru-RU')} ₽<span>/мес</span></div>
-                <button class="btn-buy-icon"><i class="fa-solid fa-plus"></i></button>
+                <button class="btn-buy-icon"><i class="fa-solid fa-arrow-right"></i></button>
             </div>
         </div>
     `).join('');
 }
 
-// Open Purchase Modal
 window.openBuyModal = function(productId) {
     tg.HapticFeedback.impactOccurred('medium');
     const product = productsData.find(p => p.id === productId);
@@ -334,11 +321,9 @@ window.openBuyModal = function(productId) {
     elements.modalBadge.textContent = product.badge;
     elements.modalDesc.textContent = product.subtitle;
     
-    // Icon styling
     elements.modalIcon.className = `modal-product-icon ${product.bgClass}`;
     elements.modalIcon.innerHTML = `<i class="fa-solid ${product.icon}"></i>`;
 
-    // Reset duration pills UI
     const durPills = elements.durationPills.querySelectorAll('.dur-pill');
     durPills.forEach((p, idx) => {
         p.classList.toggle('active', idx === 0);
@@ -348,14 +333,12 @@ window.openBuyModal = function(productId) {
     elements.modalBuy.classList.add('active');
 };
 
-// Calculate and Update Total Price
 function updateModalTotalPrice() {
     if (!state.selectedProduct) return;
     const basePrice = state.selectedProduct.price;
     const months = state.selectedDuration;
     const discount = state.selectedDiscount;
     
-    // Access type modifier (shared -20%, personal +30%)
     let typeModifier = 1.0;
     if (state.selectedAccessType === 'shared') typeModifier = 0.7;
     if (state.selectedAccessType === 'personal') typeModifier = 1.25;
@@ -364,14 +347,11 @@ function updateModalTotalPrice() {
     elements.modalTotalPrice.textContent = `${total.toLocaleString('ru-RU')} ₽`;
 }
 
-// Setup Modal Interactive Events
 function setupModalEvents() {
-    // Close buy modal
     elements.modalCloseBtn.addEventListener('click', () => {
         elements.modalBuy.classList.remove('active');
     });
 
-    // Access Type Radio listener
     document.querySelectorAll('#access-type-grid .radio-card').forEach(card => {
         card.addEventListener('click', () => {
             document.querySelectorAll('#access-type-grid .radio-card').forEach(c => c.classList.remove('active'));
@@ -385,7 +365,6 @@ function setupModalEvents() {
         });
     });
 
-    // Duration pills listener
     elements.durationPills.querySelectorAll('.dur-pill').forEach(pill => {
         pill.addEventListener('click', () => {
             elements.durationPills.querySelectorAll('.dur-pill').forEach(p => p.classList.remove('active'));
@@ -396,7 +375,6 @@ function setupModalEvents() {
         });
     });
 
-    // Payment methods radio listener
     document.querySelectorAll('.payment-methods .pay-method').forEach(pm => {
         pm.addEventListener('click', () => {
             document.querySelectorAll('.payment-methods .pay-method').forEach(p => p.classList.remove('active'));
@@ -409,35 +387,29 @@ function setupModalEvents() {
         });
     });
 
-    // Confirm Purchase Action
     elements.btnConfirmPurchase.addEventListener('click', async () => {
         await executePurchase();
     });
 
-    // Copy credentials button
     elements.btnCopyCred.addEventListener('click', () => {
         const text = elements.successCredText.textContent;
         navigator.clipboard.writeText(text);
-        showToast("Данные успешно скопированы!");
+        showToast("Данные Apyra Shop скопированы!");
         tg.HapticFeedback.notificationOccurred('success');
     });
 
-    // Close success modal
     elements.btnCloseSuccess.addEventListener('click', () => {
         elements.modalSuccess.classList.remove('active');
-        // Switch to Subscriptions Tab
         document.querySelector('.nav-item[data-tab="tab-subs"]').click();
     });
 
-    // Admin Stock Form
     if (elements.adminAddStockForm) {
         elements.adminAddStockForm.addEventListener('submit', (e) => {
             e.preventDefault();
-            const prodId = elements.adminProductSelect.value;
             const textData = elements.adminStockData.value.trim();
-            if (!textData) return showToast("Введите данные для склада!");
+            if (!textData) return showToast("Заполните складские данные!");
             
-            showToast("Склад успешно пополнен!");
+            showToast("Склад Apyra Shop пополнен!");
             elements.adminStockData.value = "";
             state.userOrdersCount += 1;
             updateAdminStats();
@@ -445,29 +417,25 @@ function setupModalEvents() {
     }
 }
 
-// Execute Purchase Request
 async function executePurchase() {
     tg.HapticFeedback.notificationOccurred('success');
     const product = state.selectedProduct;
     if (!product) return;
 
     elements.btnConfirmPurchase.disabled = true;
-    elements.btnConfirmPurchase.textContent = "Обработка платежа...";
+    elements.btnConfirmPurchase.textContent = "Активация подписки Apyra...";
 
-    // Mock generated access credentials
     const randomPass = Math.random().toString(36).substring(2, 10);
-    const mockInvite = `https://${product.id}.ai/invite/sub_${Date.now()}`;
+    const mockInvite = `https://apyra.shop/activate/${product.id}_${Date.now()}`;
     const credentialData = state.selectedAccessType === 'invite' 
-        ? `Ссылка-приглашение: ${mockInvite}`
-        : `Логин: sub_${state.user.id}@aistore.ru | Пароль: ${randomPass}`;
+        ? `Инвайт-ссылка: ${mockInvite}`
+        : `Логин: sub_${state.user.id}@apyra.shop | Пароль: ${randomPass}`;
 
-    // Close checkout modal
     setTimeout(() => {
         elements.modalBuy.classList.remove('active');
         elements.btnConfirmPurchase.disabled = false;
-        elements.btnConfirmPurchase.innerHTML = '<span>Оформить подписку</span><i class="fa-solid fa-arrow-right"></i>';
+        elements.btnConfirmPurchase.innerHTML = '<span>Оплатить и получить доступ</span><i class="fa-solid fa-arrow-right"></i>';
 
-        // Add to active subscriptions
         const expiryDate = new Date();
         expiryDate.setMonth(expiryDate.getMonth() + state.selectedDuration);
 
@@ -487,28 +455,25 @@ async function executePurchase() {
         state.userOrdersCount += 1;
         state.userTotalSpent += parseInt(elements.modalTotalPrice.textContent.replace(/\D/g, ''));
 
-        // Render Success Modal
         elements.successCredText.textContent = credentialData;
         elements.instructionSteps.innerHTML = product.instructions.map(step => `<li>${step}</li>`).join('');
         elements.modalSuccess.classList.add('active');
 
-        // Update UI Tabs
         renderMySubscriptions();
         updateProfileUI();
         updateAdminStats();
-    }, 800);
+    }, 700);
 }
 
-// Render Subscriptions List
 function renderMySubscriptions() {
-    elements.navSubsCount.textContent = state.mySubscriptions.length;
+    if (elements.navSubsCount) elements.navSubsCount.textContent = state.mySubscriptions.length;
 
     if (state.mySubscriptions.length === 0) {
         elements.mySubsContainer.innerHTML = `
-            <div style="text-align: center; padding: 50px 20px; color: var(--text-muted);">
-                <i class="fa-solid fa-box-open" style="font-size: 42px; margin-bottom: 12px; color: var(--text-dim);"></i>
-                <h4 style="margin: 0 0 6px 0; color: var(--text-main);">У вас пока нет активных подписок</h4>
-                <p style="font-size: 13px;">Выберите нейросеть в каталоге и получите авто-выдачу за 1 минуту.</p>
+            <div style="text-align: center; padding: 50px 20px; color: var(--text-secondary);">
+                <i class="fa-solid fa-box-open" style="font-size: 42px; margin-bottom: 12px; opacity: 0.5;"></i>
+                <h4 style="margin: 0 0 6px 0; color: var(--text-primary);">У вас пока нет активных подписок</h4>
+                <p style="font-size: 13px;">Выберите нейросеть в каталоге Apyra Shop для авто-выдачи.</p>
             </div>
         `;
         return;
@@ -534,29 +499,26 @@ function renderMySubscriptions() {
             </div>
 
             <div class="sub-expiry">
-                <i class="fa-solid fa-clock"></i> Действует до: <strong>${sub.expiry}</strong> (осталось ${sub.daysLeft} дн.)
+                <i class="fa-solid fa-clock"></i> Истекает: <strong>${sub.expiry}</strong> (${sub.daysLeft} дн.)
             </div>
         </div>
     `).join('');
 }
 
-// Update Profile Tab Data
 function updateProfileUI() {
-    elements.statOrdersCount.textContent = state.userOrdersCount;
-    elements.statTotalSpent.textContent = `${state.userTotalSpent.toLocaleString('ru-RU')} ₽`;
-    elements.statActiveSubs.textContent = state.mySubscriptions.length;
+    if (elements.statOrdersCount) elements.statOrdersCount.textContent = state.userOrdersCount;
+    if (elements.statTotalSpent) elements.statTotalSpent.textContent = `${state.userTotalSpent.toLocaleString('ru-RU')} ₽`;
+    if (elements.statActiveSubs) elements.statActiveSubs.textContent = state.mySubscriptions.length;
 }
 
-// Update Admin Stats
 function updateAdminStats() {
     if (elements.adminTotalRevenue) {
         elements.adminTotalRevenue.textContent = `${state.userTotalSpent.toLocaleString('ru-RU')} ₽`;
         elements.adminOrdersCount.textContent = state.userOrdersCount;
-        elements.adminStockCount.textContent = 42 + state.userOrdersCount;
+        elements.adminStockCount.textContent = 50 + state.userOrdersCount;
     }
 }
 
-// Toast Notifications Helper
 function showToast(message) {
     const toast = document.createElement('div');
     toast.className = 'toast';
